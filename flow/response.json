@@ -22,43 +22,54 @@
     },
     "STEP_1": {
         "replyMessage": [
-            "Hola! y✌️ Bienvenido a este 🤖 CHATBOT de Whatsapp, lo primero \n",
-            "decirte que mi nombre es *Steve*😎  \n",
-            "\n Si necesitas ver más info sobre las capacitacion tecnicas ",
-            "escribe *cursos* o *info* o escribe *audio*"
+            "Hola, soy un bot de whatsapp \n",
+            "y te puedo ayudar con algunas cosas \n",
+            "¿Que deseas hacer? \n",
+            "1. Comprar \n",
+            "2. Vender \n",
+            "3. Otro"
         ],
-        "media": "https://media.giphy.com/media/1kJxyyCq9ZHXX0GM3a/giphy.gif",
+        "media": null,
         "trigger": null,
         "actions": {
             "title": "¿Que te interesa ver?",
-            "message": "Recuerda todo este contenido es gratis y estaria genial que me siguas!",
-            "footer": "Gracias",
+            "message": "A continuación te mostrare algunas opciones",
+            "footer": "Baller",
             "buttons": [
                 {
-                    "body": "Cursos"
+                    "body": "Reservar"
                 },
                 {
-                    "body": "Youtube"
+                    "body": "Preguntas frecuentas"
                 },
                 {
-                    "body": "Telegram"
+                    "body": "Otra..."
                 }
             ]
         }
     },
     "STEP_2": {
         "replyMessage": [
-            "Perfecto, te voy a pasar la lista ",
-            "de los temas que tengo y un breve video 🙂🤖 \n\n",
-            "*Angular* Basico (Pago) \n",
-            "*Angular* Basico (Gratis) \n",
-            "*Node* Basico (Gratis) \n",
-            "*NGRX* Basico (Gratis) \n",
-            "*AWS* Basico (Pago) \n\n",
-            "Escribe la palabra del tema que te interese \n"
+            "Reserva de instalaciones \n"
         ],
-        "media": "https://i.giphy.com/media/5J5gN0WUk0VToHaK2p/giphy-downsized.gif",
-        "trigger": null
+        "media": null,
+        "trigger": null,
+        "actions": {
+            "title": "Horarios disponibles",
+            "message": "Selecciona alguna opcion",
+            "footer": "Baller",
+            "buttons": [
+                {
+                    "body": "Proxima semana"
+                },
+                {
+                    "body": "Otro Horario"
+                },
+                {
+                    "body": "Cargar por semanas"
+                }
+            ]
+        }
     },
     "STEP_2_1": {
         "replyMessage": [
