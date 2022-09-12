@@ -1,4 +1,5 @@
 const { getData, getReply, saveMessageMysql } = require('./mysql')
+const { getResponse, getStep } = require('./mongodb')
 const { saveMessageJson } = require('./jsonDb')
 //const { getDataIa } = require('./diaglogflow')
 const stepsInitial = require('../flow/initial.json')
@@ -19,6 +20,14 @@ const get = (message) => new Promise((resolve, reject) => {
      */
     if (process.env.DATABASE === 'mysql') {
         getData(message, (dt) => {
+            resolve(dt)
+        });
+    }
+    /**
+     * Si usas mongodb
+     */
+    if (process.env.DATABASE === 'mongodb') {
+        getStep(message).then((dt) => {
             resolve(dt)
         });
     }
@@ -51,6 +60,16 @@ const reply = (step) => new Promise((resolve, reject) => {
             resolve(resData)
         });
     }
+    /**
+     * Si usas mongodb
+     *  
+        */
+    if (process.env.DATABASE === 'mongodb') {
+        getResponse(step).then((dt) => {
+            resolve(dt)
+        });
+    }
+
 })
 
 const getIA = (message) => new Promise((resolve, reject) => {

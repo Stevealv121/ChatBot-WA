@@ -14,6 +14,10 @@ const { connectionReady, connectionLost } = require('./controllers/connection')
 const { saveMedia } = require('./controllers/save')
 const { getMessages, responseMessages, bothResponse } = require('./controllers/flows')
 const { sendMedia, sendMessage, lastTrigger, sendMessageButton, readChat } = require('./controllers/send')
+// import mongoose from "mongoose"
+// import ConnectDB from "./config/mongodb.js"
+const { mongoose } = require('mongoose');
+const ConnectDB = require('./config/mongodb.js');
 const app = express();
 app.use(cors())
 app.use(express.json())
@@ -89,7 +93,15 @@ const listenMessage = () => client.on('message', async msg => {
          * Si quieres enviar botones
          */
 
+        /*
+        * Este es el original
+        */
         //await sendMessage(client, from, response.replyMessage, response.trigger);
+
+        /**
+         * Modificado para que envia un simple dato, para probar mongo
+         */
+        await sendMessage(client, from, response, null);
 
         if (response.hasOwnProperty('actions')) {
             const { actions } = response;
@@ -163,6 +175,15 @@ client.initialize();
 
 if (process.env.DATABASE === 'mysql') {
     mysqlConnection.connect()
+}
+
+if (process.env.DATABASE === 'mongodb') {
+    ConnectDB.mongoConnection();
+
+    mongoose.connection.once('open', () => {
+        console.log('Connected to MongoDB');
+        //app.listen(port, () => console.log(`Server running on port ${port}`));
+    });
 }
 
 server.listen(port, () => {
