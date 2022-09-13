@@ -58,6 +58,7 @@ const reply = (step) => new Promise((resolve, reject) => {
         getReply(step, (dt) => {
             resData = { ...resData, ...dt }
             resolve(resData)
+
         });
     }
     /**
@@ -65,7 +66,11 @@ const reply = (step) => new Promise((resolve, reject) => {
      *  
         */
     if (process.env.DATABASE === 'mongodb') {
+        //let resData = { replyMessage: '', media: null, trigger: null }
         getResponse(step).then((dt) => {
+            //resData = { ...resData, ...dt }
+            // console.log('resData', resData);
+            //console.log('dt', dt);
             resolve(dt)
         });
     }

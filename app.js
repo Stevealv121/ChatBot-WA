@@ -88,6 +88,7 @@ const listenMessage = () => client.on('message', async msg => {
 
     if (step) {
         const response = await responseMessages(step);
+        console.log('response', response);
 
         /**
          * Si quieres enviar botones
@@ -101,13 +102,27 @@ const listenMessage = () => client.on('message', async msg => {
         /**
          * Modificado para que envia un simple dato, para probar mongo
          */
-        await sendMessage(client, from, response, null);
+        //await sendMessage(client, from, response, null);
 
-        if (response.hasOwnProperty('actions')) {
+        /**
+         * Original
+         */
+        // if (response.hasOwnProperty('actions')) {
+        //     const { actions } = response;
+        //     await sendMessageButton(client, from, null, actions);
+        //     return
+        // }
+
+        /**
+         * Test Mongo Botones
+         *  */
+        if (true) {
             const { actions } = response;
+            //console.log('actions', actions)
             await sendMessageButton(client, from, null, actions);
             return
         }
+
 
         if (!response.delay && response.media) {
             sendMedia(client, from, response.media);

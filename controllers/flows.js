@@ -3,7 +3,7 @@ const { saveExternalFile, checkIsUrl } = require('./handle')
 
 const getMessages = async (message) => {
     const data = await get(message)
-    console.log('data', data);
+    //console.log('data', data);
     return data
 }
 
@@ -13,7 +13,7 @@ const responseMessages = async (step) => {
         const file = checkIsUrl(data.media) ? await saveExternalFile(data.media) : data.media;
         return { ...data, ...{ media: file } }
     }
-    console.log('dataresponse', data);
+    //console.log('dataresponse', data);
     return data
 }
 

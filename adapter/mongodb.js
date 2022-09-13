@@ -5,17 +5,19 @@ const Response = require('../models/response');
 getResponse = async (step = '') => {
     //console.log('step', step);
     const response = await Response.findOne({ key: step });
-    const reply = response?.replyMessage || null;
-    console.log('reply', reply);
+    //const reply = response?.replyMessage || null;
+    //console.log('reply', reply);
     //callback(reply);
-    return reply
+    //console.log('response', response);
+    //console.log('buttonOne', response?.actions?.buttons[0]);
+    return response
 }
 
-getStep = async (message = '', callback) => {
+getStep = async (message = '') => {
     //console.log('message', message);
     const initial = await Initial.findOne({ keywords: message });
     const step = initial?.key || null;
-    console.log('step', step);
+    //console.log('step', step);
     //callback(step)
     return step
 }
