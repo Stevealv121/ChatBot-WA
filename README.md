@@ -1,1 +1,3 @@
 # ChatBot-WA
+
+Dialogflow disabled.
