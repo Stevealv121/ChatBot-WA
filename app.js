@@ -155,7 +155,7 @@ const listenMessage = () => client.on('message', async msg => {
 client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: '/usr/bin/google-chrome',
+        //executablePath: '/usr/bin/google-chrome',
         headless: true,
         args: ['--no-sandbox']
     },

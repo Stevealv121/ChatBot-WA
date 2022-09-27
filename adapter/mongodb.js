@@ -5,6 +5,10 @@ const Response = require('../models/response');
 getResponse = async (step = '') => {
     //console.log('step', step);
     const response = await Response.findOne({ key: step });
+    if (response === null) {
+        const default_response = await Response.findOne({ key: 'DEFAULT' });
+        return default_response
+    }
     //const reply = response?.replyMessage || null;
     //console.log('reply', reply);
     //callback(reply);
@@ -19,6 +23,7 @@ getStep = async (message = '') => {
     const step = initial?.key || null;
     //console.log('step', step);
     //callback(step)
+
     return step
 }
 
