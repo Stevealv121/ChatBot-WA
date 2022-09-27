@@ -14,10 +14,9 @@ const { connectionReady, connectionLost } = require('./controllers/connection')
 const { saveMedia } = require('./controllers/save')
 const { getMessages, responseMessages, bothResponse } = require('./controllers/flows')
 const { sendMedia, sendMessage, lastTrigger, sendMessageButton, readChat } = require('./controllers/send')
-// import mongoose from "mongoose"
-// import ConnectDB from "./config/mongodb.js"
 const { mongoose } = require('mongoose');
 const ConnectDB = require('./config/mongodb.js');
+
 const app = express();
 app.use(cors())
 app.use(express.json())
@@ -155,7 +154,11 @@ const listenMessage = () => client.on('message', async msg => {
 
 client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: { headless: true }
+    puppeteer: {
+        executablePath: '/usr/bin/google-chrome',
+        headless: true,
+        args: ['--no-sandbox']
+    },
 });
 
 client.on('qr', qr => generateImage(qr, () => {
@@ -206,3 +209,4 @@ server.listen(port, () => {
 })
 checkEnvFile();
 
+module.exports = { app };
